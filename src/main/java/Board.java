@@ -86,7 +86,7 @@ public class Board {
     }*/
 
 
-    private void calculateNeighboringMines() {
+    public void calculateNeighboringMines() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (!cells[y][x].isMine()) {

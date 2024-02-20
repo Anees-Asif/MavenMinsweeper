@@ -32,6 +32,21 @@ private Board board;
 
         Assertions.assertEquals(10, board.placeMines(), "There should be 10 mines on the board");
     }
+
+    @Test
+    public void neighboringMinesCalculatedCorrectly() {
+        board = new Board(3, 3, 0);
+        board.getCell(1, 1).setMine(true);
+        board.calculateNeighboringMines();
+
+        // Assert neighboring mines count
+        Assertions.assertEquals(1, board.getCell(0, 0).getNeighboringMines(), "Cell (0,0) should have 1 neighboring mine");
+        Assertions.assertEquals(1, board.getCell(0, 1).getNeighboringMines(), "Cell (0,1) should have 1 neighboring mine");
+
+
+        // Assert that the cell with the mine itself doesn't count its own mine
+        Assertions.assertEquals(0, board.getCell(1, 1).getNeighboringMines(), "Cell with mine should not count itself");
+    }
     @Test
    public void revealCellRevealsCorrectly() {
         board = new Board(3, 3, 0); // Create a small board with no mines

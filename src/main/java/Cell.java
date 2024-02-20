@@ -31,4 +31,6 @@ public class Cell {
     public void setNeighboringMines(int neighboringMines) {
         this.neighboringMines = neighboringMines;
     }
+
+
 }
