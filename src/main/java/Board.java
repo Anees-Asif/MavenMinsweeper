@@ -31,7 +31,7 @@ public class Board {
         return height;
     }
 
-    private void placeMines() {
+    /*private void placeMines() {
         Random random = new Random();
         int placedMines = 0;
         while (placedMines < mines) {
@@ -43,8 +43,27 @@ public class Board {
                 placedMines++;
             }
         }
+
     }
 
+     */
+    public int placeMines() {
+        Random random = new Random();
+        int placedMines = 0;
+        while (placedMines < mines) {
+            int x = random.nextInt(width);
+            int y = random.nextInt(height);
+
+            if (!cells[y][x].isMine()) {
+                cells[y][x].setMine(true);
+                placedMines++;
+            }
+        }
+        return placedMines;
+    }
+
+
+/* Legacy code, for console version.
     public void displayBoard() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -64,7 +83,7 @@ public class Board {
             }
             System.out.println();
         }
-    }
+    }*/
 
 
     private void calculateNeighboringMines() {
